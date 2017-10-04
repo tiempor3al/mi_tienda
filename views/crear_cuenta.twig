@@ -1,0 +1,57 @@
+{% extends "layout.twig" %}
+{% block title %}Crear cuenta{% endblock %}
+{% block content %}
+
+<div class="row">
+	<div class="col-md-8">
+	
+		{% if data is not defined%}
+		{% set data = {'nombre': '','apellido':'','correo':'','calle':'','colonia':'','cp':'','telefono':''}%}		
+		{% endif %}
+	
+		{% if errors is defined %}
+			<div class="alert alert-danger" role="alert">
+				<ul>
+					{% for error in errors %}
+						<li>{{ error.getMessage() }}</li>
+					{% endfor %}
+				</ul>
+			</div>
+		{% endif %}
+	
+	
+		<form action="crear_cuenta" method="post">
+			<div class="form-group">
+				<label for="nombre">Nombre</label>
+				<input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" value="{{data['nombre']}}">
+			</div>
+			<div class="form-group">
+				<label for="apellido">Apellido</label>
+				<input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellido" value="{{data['apellido']}}">
+			</div>
+			<div class="form-group">
+				<label for="correo">Correo</label>
+				<input type="email" class="form-control" name="correo" id="correo" placeholder="Correo" value="{{data['correo']}}">
+			</div>
+			<div class="form-group">
+				<label for="calle">Calle</label>
+				<input type="text" class="form-control" name="calle" id="calle" placeholder="Calle" value="{{data['calle']}}">
+			</div>
+			<div class="form-group">
+				<label for="colonia">Colonia</label>
+				<input type="text" class="form-control" name="colonia" id="colonia" placeholder="Colonia" value="{{data['colonia']}}">
+			</div>
+			<div class="form-group">
+				<label for="cp">Código postal</label>
+				<input type="text" pattern="[0-9]{5}"  class="form-control" name="cp" id="cp" placeholder="14370" value="{{data['cp']}}">
+			</div>
+			<div class="form-group">
+				<label for="telefono">Télefono</label>
+				<input type="tel" class="form-control" name="telefono" id="telefono" placeholder="5556884466" value="{{data['telefono']}}">
+			</div>
+			
+			<button type="submit" class="btn btn-success">Crear cuenta</button>
+		</form>
+	</div>
+</div>
+{% endblock %}
