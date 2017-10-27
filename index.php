@@ -30,10 +30,18 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/views',
 ));
 
+$app->register(new Silex\Provider\AssetServiceProvider());
+
 
 //Definimos una ruta de inicio
 $app->get('/', function() use($app) {
-	return $app['twig']->render('principal.twig');
+	
+	$sql = "SELECT p.*, m.nombre marca, c.nombre categoria FROM productos p
+  INNER JOIN marcas m ON m.id = p.marca_id
+  INNER JOIN categorias  c ON c.id = p.categoria_id";
+	$productos = $app['db']->fetchAll($sql);
+		
+	return $app['twig']->render('principal.twig',array('productos'=>$productos));
 });
 
 //Ruta para crear cuenta

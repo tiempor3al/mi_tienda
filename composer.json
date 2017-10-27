@@ -3,6 +3,8 @@
         "silex/silex": "~2.0",
         "doctrine/dbal": "~2.2",
         "twig/twig": "^2.4",
-        "symfony/validator": "^3.3"
+        "symfony/validator": "^3.3",
+        "symfony/asset": "^3.3",
+        "symfony/twig-bridge": "^3.3"
     }
 }

@@ -1,0 +1,28 @@
+{% extends "layout.twig" %}
+{% block title %}Principal{% endblock %}
+{% block content %}
+
+<div class="row">
+	<div class="col-md-8">
+		<h1>Página principal</h1>
+		
+		<h2>Productos</h2>
+		
+		{% for producto in productos %}
+			<div>
+				<div>
+				<img src="{{asset('images')}}/{{producto.url_imagen}}"/>
+				<div>
+
+				<div>
+				<span>{{ producto['nombre'] }}</span>
+				<div>
+
+				
+			</div>
+		{% endfor %}
+		
+		
+	</div>
+</div>
+{% endblock %}
